@@ -1,0 +1,16 @@
+{
+    "name": "DevDunk.XR",
+    "rootNamespace": "",
+    "references": [
+        "GUID:65a004a26c89ac5468e8d4b4b057f1c8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

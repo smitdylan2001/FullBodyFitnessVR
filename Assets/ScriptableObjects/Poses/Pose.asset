@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990f2e17c55329240974bff57026f682, type: 3}
+  m_Name: Pose
+  m_EditorClassIdentifier: 
+  PoseName: 
+  HoldDuration: 1
+  PositionMargin: 2
+  RotationMargin: 50
+  PoseData:
+  - JointName: Pelvis
+    JointID: 0
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_HIP
+    JointID: 1
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_HIP
+    JointID: 2
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: SPINE1
+    JointID: 3
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_KNEE
+    JointID: 4
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_KNEE
+    JointID: 5
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: SPINE2
+    JointID: 6
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_ANKLE
+    JointID: 7
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_ANKLE
+    JointID: 8
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: SPINE3
+    JointID: 9
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_FOOT
+    JointID: 10
+    Position: {x: 1, y: 0.54, z: 1.7}
+    Rotation: {x: 54, y: 12, z: 4}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_FOOT
+    JointID: 11
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: NECK
+    JointID: 12
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_COLLAR
+    JointID: 13
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_COLLAR
+    JointID: 14
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: HEAD
+    JointID: 15
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_SHOULDER
+    JointID: 16
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_SHOULDER
+    JointID: 17
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_ELBOW
+    JointID: 18
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_ELBOW
+    JointID: 19
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_WRIST
+    JointID: 20
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_WRIST
+    JointID: 21
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: LEFT_HAND
+    JointID: 22
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
+  - JointName: RIGHT_HAND
+    JointID: 23
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    PosWeight: 1
+    RotWeight: 1
