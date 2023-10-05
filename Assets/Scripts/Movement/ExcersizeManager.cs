@@ -38,8 +38,6 @@ namespace DevDunk.Movement
 
         public void SaveCurrentPose()
         {
-            JSONTools.V3SaveIntoJson(transform.position);
-
             activePose = BodyTrackingManager.Instance.BodyTrackerResult;
             trackingActive = true;
 

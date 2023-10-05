@@ -7,10 +7,13 @@ namespace DevDunk.Movement.Utilities
 {
     public static class JSONTools
     {
+        private static int poseCounter = 0;
+
         public static void SaveIntoJson(BodyTrackerResult data)
         {
             string potion = JsonUtility.ToJson(data);
-            System.IO.File.WriteAllText(Application.persistentDataPath + "/PotionData.json", potion);
+            System.IO.File.WriteAllText(Application.persistentDataPath + $"/PotionData{poseCounter}.json", potion);
+            poseCounter++;
         }
         public static BodyTrackerResult ReadFromJson(string data)
         {
