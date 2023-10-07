@@ -8,17 +8,24 @@ namespace DevDunk.Movement
 {
     public class ExcersizeManager : MonoBehaviour
     {
+        public static ExcersizeManager Instance { get; private set; }
+
+        public float TotalDistance, TotalRotation;
         [SerializeField] private TMP_Text poseText;
 
         BodyTrackerResult activePose;
-        float totalDistance, totalRotation;
         bool trackingActive;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Update()
         {
             if (!trackingActive) return;
 
-            totalDistance = totalRotation = 0;
+            TotalDistance = TotalRotation = 0;
 
             for (int i = 0; i < activePose.trackingdata.Length; i++)
             {
@@ -30,10 +37,15 @@ namespace DevDunk.Movement
                 Vector3 activePos = new Vector3((float)activePose.PosX, (float)activePose.PosY, (float)activePose.PosZ);
                 Quaternion activeRot = new Quaternion((float)activePose.RotQx, (float)activePose.RotQy, (float)activePose.RotQz, (float)activePose.RotQw);
 
-                totalDistance += Vector3.Distance(currentPos, activePos);
-                totalRotation += Quaternion.Angle(currentRot, activeRot);
+                TotalDistance += Vector3.Distance(currentPos, activePos);
+                TotalRotation += Quaternion.Angle(currentRot, activeRot);
             }
-            poseText.text = $"Distance: {totalDistance}\nRotation: {totalRotation}";
+            poseText.text = $"Distance: {TotalDistance}\nRotation: {TotalRotation}";
+        }
+
+        public void SetActivePose(BodyTrackerResult pose)
+        {
+            activePose = pose;
         }
 
         public void SaveCurrentPose()

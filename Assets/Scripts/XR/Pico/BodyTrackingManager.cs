@@ -10,12 +10,32 @@ namespace DevDunk.XR
 
         public Transform[] BodyParts;
         public BodyTrackerResult BodyTrackerResult;
+        public Quaternion RotationOffset, RotationOffsetDebug;
 
         bool startTracking;
+
+        GameObject[] joints;
+
+        WaitForSeconds WaitOneSecond = new WaitForSeconds(1);
 
         private void Awake()
         {
             Instance = this;
+
+            RotationOffset = Quaternion.identity;
+
+            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+            Material material = go.GetComponent<Renderer>().material;
+            material.color = Color.red;
+
+            joints = new GameObject[BodyParts.Length];
+            for (int i = 0; i < joints.Length; i++)
+            {
+                joints[i] = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                joints[i].transform.localScale = Vector3.one/10;
+
+                joints[i].GetComponent<Renderer>().sharedMaterial = material;
+            }
         }
 
         private void OnApplicationFocus(bool focus)
@@ -29,7 +49,6 @@ namespace DevDunk.XR
 
         private IEnumerator Start()
         {
-
             PXR_Plugin.System.FitnessBandNumberOfConnections += FitnessBandNumberOfConnectionsFuction;
             PXR_Plugin.System.FitnessBandAbnormalCalibrationData += FitnessBandAbnormalCalibrationDataFuction;
             PXR_Plugin.System.FitnessBandElectricQuantity += FitnessBandElectricQuantityFuction;
@@ -49,7 +68,7 @@ namespace DevDunk.XR
             }
             while (calibrated == 0)
             {
-                yield return new WaitForSeconds(1);
+                yield return WaitOneSecond;
                 value = PXR_Input.GetFitnessBandCalibState(ref calibrated);
                 Debug.Log(value + " " + calibrated + " not calibrated");
             }
@@ -94,14 +113,6 @@ namespace DevDunk.XR
             // Get the position data of each body joint
             BodyTrackerResult = new BodyTrackerResult();
             var status = PXR_Input.GetBodyTrackingPose(0, ref BodyTrackerResult);
-
-            return;
-            string pos = status + "\n";
-            foreach(var pose in BodyTrackerResult.trackingdata)
-            {
-                pos += $"{pose.localpose.PosX},{pose.localpose.PosY},{pose.localpose.PosZ}; \n";
-            }
-            Debug.Log(pos);
         }
 
         void UpdateBodyPositions()
@@ -110,9 +121,11 @@ namespace DevDunk.XR
             {
                 BodyTrackerTransform pose = BodyTrackerResult.trackingdata[i];
                 var pos = new Vector3((float)pose.localpose.PosX, (float)pose.localpose.PosY, (float)pose.localpose.PosZ);
-                var rot = new Quaternion((float)pose.localpose.RotQx, (float)pose.localpose.RotQy, (float)pose.localpose.RotQz, (float)pose.localpose.RotQw);
+                var rot = new Quaternion((float)pose.localpose.RotQx, (float)pose.localpose.RotQy, (float)pose.localpose.RotQz, (float)pose.localpose.RotQw) * RotationOffset;
 
                 BodyParts[i].SetPositionAndRotation(pos, rot);
+
+                joints[i].transform.SetPositionAndRotation(pos, rot);
             }
         }
 
@@ -121,6 +134,11 @@ namespace DevDunk.XR
             PXR_Plugin.System.FitnessBandNumberOfConnections -= FitnessBandNumberOfConnectionsFuction;
             PXR_Plugin.System.FitnessBandAbnormalCalibrationData -= FitnessBandAbnormalCalibrationDataFuction;
             PXR_Plugin.System.FitnessBandElectricQuantity -= FitnessBandElectricQuantityFuction;
+        }
+
+        public void AddRotationOffset()
+        {
+            RotationOffset *= RotationOffsetDebug;
         }
 
         private void FitnessBandNumberOfConnectionsFuction(int state, int value)
