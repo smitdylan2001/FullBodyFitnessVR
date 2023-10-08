@@ -11,7 +11,7 @@ namespace DevDunk.XR
         public Transform[] BodyParts;
         public BodyTrackerResult BodyTrackerResult;
         public Quaternion RotationOffset, RotationOffsetDebug;
-
+        Quaternion[] startPos;
         bool startTracking;
 
         GameObject[] joints;
@@ -35,6 +35,13 @@ namespace DevDunk.XR
                 joints[i].transform.localScale = Vector3.one/10;
 
                 joints[i].GetComponent<Renderer>().sharedMaterial = material;
+            }
+
+            startPos = new Quaternion[BodyParts.Length];
+
+            for (int i = 0; i < startPos.Length; i++)
+            {
+                startPos[i] = BodyParts[i].rotation;
             }
         }
 
@@ -105,6 +112,8 @@ namespace DevDunk.XR
         {
             if (!startTracking) return;
             GetBodyPose();
+
+            return;
             UpdateBodyPositions();
         }
 
@@ -121,7 +130,7 @@ namespace DevDunk.XR
             {
                 BodyTrackerTransform pose = BodyTrackerResult.trackingdata[i];
                 var pos = new Vector3((float)pose.localpose.PosX, (float)pose.localpose.PosY, (float)pose.localpose.PosZ);
-                var rot = new Quaternion((float)pose.localpose.RotQx, (float)pose.localpose.RotQy, (float)pose.localpose.RotQz, (float)pose.localpose.RotQw) * RotationOffset;
+                var rot = new Quaternion((float)pose.localpose.RotQx, (float)pose.localpose.RotQy, (float)pose.localpose.RotQz, (float)pose.localpose.RotQw) * startPos[i];
 
                 BodyParts[i].SetPositionAndRotation(pos, rot);
 
