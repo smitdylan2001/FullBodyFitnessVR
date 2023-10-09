@@ -33,7 +33,7 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 16
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
@@ -3217,6 +3217,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1886514327}
     m_Modifications:
+    - target: {fileID: -8856915572821261032, guid: 2c5069d5e6c3afc43b5db60eaac6da2b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5069d5e6c3afc43b5db60eaac6da2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3303,7 +3307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1401091207740199991, guid: 2c5069d5e6c3afc43b5db60eaac6da2b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3985949359080443293, guid: 2c5069d5e6c3afc43b5db60eaac6da2b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3311,7 +3315,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8a32e873523a4f248aa73b0f2d2eb54a, type: 2}
     - target: {fileID: 4844812706484203799, guid: 2c5069d5e6c3afc43b5db60eaac6da2b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5212961785940948418, guid: 2c5069d5e6c3afc43b5db60eaac6da2b, type: 3}
       propertyPath: m_IsActive
@@ -3650,6 +3654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2030028549}
   - component: {fileID: 2030028550}
+  - component: {fileID: 2030028551}
   m_Layer: 0
   m_Name: Excersize Manager
   m_TagString: Untagged
@@ -3687,6 +3692,31 @@ MonoBehaviour:
   TotalDistance: 0
   TotalRotation: 0
   poseText: {fileID: 1000518258}
+--- !u!114 &2030028551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030028548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b079e70f0479c4f91ac817acb5b5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posIncrementMultiplier: 1
+  rotIncrementMultiplier: 1
+  VideoPlayer: {fileID: 0}
+  gameItems:
+  - Name: Intro
+    PoseClip: {fileID: 0}
+    Pose: {fileID: 0}
+    HoldClip: {fileID: 0}
+  - Name: 
+    PoseClip: {fileID: 0}
+    Pose: {fileID: 0}
+    HoldClip: {fileID: 0}
+  StartGamePlay: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

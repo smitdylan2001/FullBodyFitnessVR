@@ -10,55 +10,38 @@ namespace DevDunk.GameSystems
     {
         public float posIncrementMultiplier = 1, rotIncrementMultiplier = 1;
         public VideoPlayer VideoPlayer;
-        public PoseObject Starting, Squad, TPose, RKneeUp, LKneeUp;
-        public VideoClip Introduction, StartVideo, SquadVideo, SquadHoldIt, TPoseVideo, RKneeVideo, RKneeHoldIt, LKneeVideo, LKneeHoldIt, Ending;
+
+        public GameItem[] gameItems;
 
         private PoseObject activePose;
+        public bool StartGamePlay;
+        WaitForSeconds waitSecond = new WaitForSeconds(1);
 
         IEnumerator Start()
         {
-            PlayVideo(Introduction);
-            yield return WaitForEndOfClip();
+            if (!StartGamePlay) yield return waitSecond;
 
-            activePose = Starting;
-            PlayVideo(StartVideo);
+            foreach (var item in gameItems)
+            {
+                if(item.PoseClip)
+                {
+                    PlayVideo(item.PoseClip);
+                }
 
-            yield return WaitForPoseCompleted();
+                if (item.Pose)
+                {
+                    yield return WaitForPoseCompleted(item.Pose);
+                }
+                else if(item.PoseClip)
+                {
+                    yield return WaitForEndOfClip();
+                }
 
-            activePose = Squad;
-            PlayVideo(SquadVideo);
-
-            yield return WaitForPoseCompleted();
-
-            PlayVideo(SquadHoldIt);
-
-            yield return new WaitForSeconds(activePose.HoldDuration);
-
-            activePose = TPose;
-            PlayVideo(TPoseVideo);
-
-            yield return WaitForPoseCompleted();
-
-            activePose = RKneeUp;
-            PlayVideo(RKneeVideo);
-
-            yield return WaitForPoseCompleted();
-
-            PlayVideo(RKneeHoldIt);
-
-            yield return WaitForEndOfClip();
-
-            activePose = LKneeUp;
-            PlayVideo(LKneeVideo);
-
-            yield return WaitForPoseCompleted();
-
-            PlayVideo(LKneeHoldIt);
-
-            yield return WaitForEndOfClip();
-
-            PlayVideo(Ending);
-            //Reset BasePose (maybe calculate positions based off of changes from base pose for auto recenter??)
+                if (item.HoldClip)
+                {
+                    yield return WaitForEndOfClip();
+                }
+            }
         }
 
         void PlayVideo(VideoClip clip)
@@ -83,8 +66,10 @@ namespace DevDunk.GameSystems
             }
         }
 
-        IEnumerator WaitForPoseCompleted()
+        IEnumerator WaitForPoseCompleted(PoseObject pose)
         {
+            SetActivePose(pose);
+
             float timer = 0;
             float posMargin = activePose.PositionMargin;
             float rotMargin = activePose.RotationMargin;
