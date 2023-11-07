@@ -7,6 +7,7 @@ namespace DevDunk.XR
     public class BodyTrackingManager : MonoBehaviour
     {
         public static BodyTrackingManager Instance { get; private set; }
+        public Renderer[] bodyMesh; 
 
         public Transform[] BodyParts;
         public BodyTrackerResult BodyTrackerResult;
@@ -43,6 +44,9 @@ namespace DevDunk.XR
             {
                 startPos[i] = BodyParts[i].rotation;
             }
+
+            foreach (var mesh in bodyMesh) { mesh.enabled = false; }
+            
         }
 
         private void OnApplicationFocus(bool focus)
@@ -105,6 +109,7 @@ namespace DevDunk.XR
             BodyTrackerResult bodyTrackerResult = new BodyTrackerResult();
             PXR_Input.GetBodyTrackingPose(0, ref bodyTrackerResult);
 
+            foreach (var mesh in bodyMesh) { mesh.enabled = true; }
             startTracking = true;
         }
 
