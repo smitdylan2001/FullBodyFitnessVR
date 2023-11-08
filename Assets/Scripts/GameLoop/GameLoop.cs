@@ -15,7 +15,7 @@ namespace DevDunk.GameSystems
         public GameObject ProgressIndicator;
         public GameItem[] gameItems;
         private PoseObject activePose;
-        public bool StartGamePlay;
+        public static bool StartGamePlay;
         WaitForSeconds waitSecond = new WaitForSeconds(1);
 
         Material progressMat;

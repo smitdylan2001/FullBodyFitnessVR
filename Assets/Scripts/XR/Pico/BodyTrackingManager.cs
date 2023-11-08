@@ -25,19 +25,6 @@ namespace DevDunk.XR
 
             RotationOffset = Quaternion.identity;
 
-            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-            Material material = go.GetComponent<Renderer>().material;
-            material.color = Color.red;
-
-            joints = new GameObject[BodyParts.Length];
-            for (int i = 0; i < joints.Length; i++)
-            {
-                joints[i] = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                joints[i].transform.localScale = Vector3.one/10;
-
-                joints[i].GetComponent<Renderer>().sharedMaterial = material;
-            }
-
             startPos = new Quaternion[BodyParts.Length];
 
             for (int i = 0; i < startPos.Length; i++)
@@ -138,8 +125,6 @@ namespace DevDunk.XR
                 var rot = new Quaternion((float)pose.localpose.RotQx, (float)pose.localpose.RotQy, (float)pose.localpose.RotQz, (float)pose.localpose.RotQw) * startPos[i];
 
                 BodyParts[i].SetPositionAndRotation(pos, rot);
-
-                joints[i].transform.SetPositionAndRotation(pos, rot);
             }
         }
 
