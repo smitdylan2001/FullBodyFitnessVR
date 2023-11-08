@@ -12,7 +12,8 @@ namespace DevDunk.GameSystems
         public float posIncrementMultiplier = 1, rotIncrementMultiplier = 1;
         public VideoPlayer VideoPlayer;
         public float MinPoseTime = 2;
-        public GameObject ProgressIndicator;
+        public GameObject ProgressIndicator, completeIndicator;
+        public AudioSource winAudio;
         public GameItem[] gameItems;
         private PoseObject activePose;
         public static bool StartGamePlay;
@@ -47,7 +48,7 @@ namespace DevDunk.GameSystems
 
                 if (item.PoseClip)
                 {
-                    yield return PlayVideo(item.PoseClip);
+                    PlayVideo(item.PoseClip);
                     Debug.Log("Play Video 1: " + item.PoseClip.name);
                 }
 
@@ -64,14 +65,17 @@ namespace DevDunk.GameSystems
                 ProgressIndicator.SetActive(true);
                 if (item.HoldClip)
                 {
-                    yield return PlayVideo(item.HoldClip);
+                    PlayVideo(item.HoldClip);
                     Debug.Log("Play Video 2: " + item.HoldClip.name);
                     yield return WaitForEndOfClip();
+                    TriggerComplete();
                 }
-                else
+                else if(item.Pose)
                 {
                     yield return WaitFor5Seconds(item.HoldTimeNoVideo);
+                    TriggerComplete();
                 }
+
                 ProgressIndicator.SetActive(false);
             }
         }
@@ -81,12 +85,25 @@ namespace DevDunk.GameSystems
             progressMat.SetFloat(shaderID, progress);
         }
 
-        IEnumerator PlayVideo(VideoClip clip)
+        private void TriggerComplete()
+        {
+            completeIndicator.SetActive(true);
+            winAudio.Play();
+            StartCoroutine(DisableObject());
+        }
+
+        IEnumerator DisableObject()
+        {
+            yield return waitSecond;
+            completeIndicator.SetActive(false);
+        }
+
+        void PlayVideo(VideoClip clip)
         {
             VideoPlayer.Stop();
             VideoPlayer.clip = clip;
-            VideoPlayer.Prepare();
-            while (!VideoPlayer.isPrepared) yield return null;
+            //VideoPlayer.Prepare();
+            //while (!VideoPlayer.isPrepared) yield return null;
             VideoPlayer.Play();
         }
 
