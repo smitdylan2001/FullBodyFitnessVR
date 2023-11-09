@@ -11,6 +11,7 @@ namespace DevDunk.Tools
 
         private void OnCollisionEnter(Collision collision)
         {
+            Debug.Log(collision.collider.tag);
             if(requiredTag.Length == 0 || collision.collider.CompareTag(requiredTag))
             {
                 Event.Invoke();

@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaOffset: 5.33
-    - _Progress: 0.8625543
+    - _Progress: 0.057375997
     - _ProgressCorrector: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
