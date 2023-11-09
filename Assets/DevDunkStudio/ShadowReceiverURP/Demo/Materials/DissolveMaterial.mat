@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShadowReceiver
-  m_Shader: {fileID: -6465566751694194690, guid: a9719fdff057f804ab66c29cca14b4e7, type: 3}
+  m_Name: DissolveMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 30052c0eee69fcb41a959559cdc94ad8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -81,6 +81,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Vector1_3f290ab4136a4e8cac27e6d4176ef3e9: 5
+    - Vector1_5ff25bc1f0254c058cfb0bbc0389593c: 59.04
+    - Vector1_8d13fd794626425a926bf4f8bc991c84: 38.4
+    - Vector1_90b32100150249aaae02cad5430cbabe: 0.05
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -109,13 +113,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_72bc1e57291a4e8dadc03f5e475acd62: {r: 0.16981131, g: 0.16901031, b: 0.16901031, a: 0.41960785}
+    - Color_683704b7c83f4f25ada06f5ff068ed93: {r: 0, g: 0, b: 0, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &7525998509276615888
+--- !u!114 &760807747055015177
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShadowReceiver
-  m_Shader: {fileID: -6465566751694194690, guid: a9719fdff057f804ab66c29cca14b4e7, type: 3}
+  m_Name: ShadowReceiverDoubleSided
+  m_Shader: {fileID: -6465566751694194690, guid: 6af0f2bbc26405346884e11ae878a36c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -109,7 +109,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_72bc1e57291a4e8dadc03f5e475acd62: {r: 0.16981131, g: 0.16901031, b: 0.16901031, a: 0.41960785}
+    - Color_72bc1e57291a4e8dadc03f5e475acd62: {r: 0.1509434, g: 0.14619675, b: 0.14619675, a: 0.6392157}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

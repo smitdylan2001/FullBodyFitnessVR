@@ -43,7 +43,7 @@ namespace DevDunk.Movement
                     TotalRotation += Quaternion.Angle(currentRot, activeRot);
                 }
             }
-            poseText.text = $"Distance: {TotalDistance}\nRotation: {TotalRotation}";
+            //poseText.text = $"Distance: {TotalDistance}\nRotation: {TotalRotation}";
         }
 
         public void SetActivePose(BodyTrackerResult pose)

@@ -49,24 +49,24 @@ namespace DevDunk.GameSystems
                 if (item.PoseClip)
                 {
                     PlayVideo(item.PoseClip);
-                    Debug.Log("Play Video 1: " + item.PoseClip.name);
+                    //Debug.Log("Play Video 1: " + item.PoseClip.name);
                 }
 
                 if (item.Pose)
                 {
                     yield return WaitForPoseCompleted(item.Pose);
-                    Debug.Log("Done Pose" + item.Name);
+                    //Debug.Log("Done Pose" + item.Name);
                 }
                 else if(item.PoseClip)
                 {
                     yield return WaitForEndOfClip();
-                    Debug.Log("Waited for clip1 ");
+                    //Debug.Log("Waited for clip1 ");
                 }
                 ProgressIndicator.SetActive(true);
                 if (item.HoldClip)
                 {
                     PlayVideo(item.HoldClip);
-                    Debug.Log("Play Video 2: " + item.HoldClip.name);
+                    //Debug.Log("Play Video 2: " + item.HoldClip.name);
                     yield return WaitForEndOfClip();
                     TriggerComplete();
                 }
@@ -75,8 +75,12 @@ namespace DevDunk.GameSystems
                     yield return WaitFor5Seconds(item.HoldTimeNoVideo);
                     TriggerComplete();
                 }
+                else
+                {
+                    ProgressIndicator.SetActive(false);
+                }
 
-                ProgressIndicator.SetActive(false);
+                
             }
         }
 
@@ -95,6 +99,7 @@ namespace DevDunk.GameSystems
         IEnumerator DisableObject()
         {
             yield return waitSecond;
+            ProgressIndicator.SetActive(false);
             completeIndicator.SetActive(false);
         }
 
